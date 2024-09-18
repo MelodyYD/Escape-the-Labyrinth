@@ -60,6 +60,7 @@ public class Application {
         Labyrinth laby = new Labyrinth();
         MiniGame mGame = new MiniGame();
 
+        //시작
         line();
         System.out.println("================== 미로 탈출 게임~ ==================");
         line();
@@ -69,7 +70,7 @@ public class Application {
 
         line();
         System.out.print("플레이어의 이름을 입력해주세요. : ");
-        name = sc.nextLine();
+        name = sc.nextLine();            //플레이어 이름 설정
         System.out.println();
         System.out.println("어서 오세요, " + name + "님!");
         System.out.println();
@@ -82,50 +83,6 @@ public class Application {
             opt.endGame(name);
         } else if (ss == 1) {
             opt.startGame(name);
-//            while (true) {
-//                opt.defaultOption();
-//                int numDef = sc.nextInt();
-//                if(numDef == 9) {
-//                    break;
-//                }
-//                switch (numDef) {
-//                    case 1:
-//                        break;
-//                    case 2:
-//                        while(true) {
-//                            opt.goldChack();
-//                            int numGold = sc.nextInt();
-//                            if(numGold == 2) {
-//                                break;
-//                            }
-//                            switch (numGold) {
-//                                case 1:
-//                                    System.out.println("현재 " + name + "님이 가지고 있는 골드는 총 " + g.goldState() + " Gold 입니다.");
-//                                    line();
-//                                    break;
-//                                case 3:
-//                                    opt.escapeLabirinth();
-//                                    break;
-//                                default:
-//                                    System.out.println("잘못 입력했습니다. 다시 입력해 주세요.");
-//                                    break;
-//                            }
-//                        }
-//                        System.out.println("뒤로 돌아갑니다.");
-//                        line();
-//                        break;
-//
-//                    case 3:
-//                        opt.startBack();
-//                        break;
-//
-//                    default:
-//                        System.out.println("잘못 입력했습니다. 다시 입력해 주세요.");
-//                        break;
-//                }
-//            }
-//            opt.finishGame(); //탈출 성공
-
         }
 
     }
