@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class MiniGame {
 
     public void miniGameRPSStart() {
-        line();
+        Application.line();
         System.out.println("=============  · · · Now Loading · · · ============");
-        line();
+        Application.line();
         System.out.println("                    가위바위보 게임!");
         System.out.println("        가위바위보 대결을 통하여 골드를 획득해 보세요!");
         System.out.println();
@@ -29,7 +29,7 @@ public class MiniGame {
                 System.out.println();
                 System.out.println("잘못 입력하였습니다.");
                 System.out.println("다시 입력해주세요!");
-                line();
+                Application.line();
             } else {
                 userRPS(userRps,randRps);
                 break;
@@ -77,10 +77,10 @@ public class MiniGame {
         String usrRPS = changeRPS(userRps);
 
         System.out.println("과연 결과는...!");
-        line();
+        Application.line();
         System.out.println(Application.name + "님이 낸 패 : " + usrRPS);
         System.out.println("미궁이 낸 패 : " + ranRPS);
-        line();
+        Application.line();
     }
 
     //미니게임(가위바위보) 만들기
@@ -111,12 +111,6 @@ public class MiniGame {
         Random loseRand = new Random();
         int loseGold = loseRand.nextInt(10);
         return loseGold;
-    }
-
-    public static void line () {
-        System.out.println();
-        System.out.println("===================================================");
-        System.out.println();
     }
 
 }

@@ -12,7 +12,7 @@ public class Option {
 
 
     public void defaultOption() {
-        line();
+        Application.line();
         System.out.println(" 무엇을 하시겠습니까?");
         System.out.println("   1. 길 찾기");
         System.out.println("   2. 골드 확인");
@@ -56,11 +56,11 @@ public class Option {
             int numGold = sc.nextInt();
             if (numGold == 1) {
                 System.out.println("현재 " + name + "님이 가지고 있는 골드는 총 " + Application.g.goldState() + " Gold 입니다.");
-                line();
+                Application.line();
             } else if(numGold == 2) {
                 mGame.miniGameRPSStart();
 //                System.out.println("뒤로 돌아갑니다.");
-                line();
+                Application.line();
                 break;
             } else if(numGold == 3) {
                 escapeLabirinth();
@@ -72,17 +72,17 @@ public class Option {
     }
 
     public void endGame(String name) {
-        line();
+        Application.line();
         System.out.println("                      아쉽네요.");
         System.out.println("                  게임이 종료됩니다.");
         System.out.println("                   또 봐요, " + name + "님.");
-        line();
+        Application.line();
     }
 
     public void finishGame () {
-        line();
+        Application.line();
         System.out.println("                     탈출 성공!");
-        line();
+        Application.line();
     }
 
     public void labyrinthOption() {
@@ -91,7 +91,7 @@ public class Option {
 
     public void goldChack() {
         // 2. 골드 확인
-        line();
+        Application.line();
         System.out.println(" 무엇을 하시겠습니까?");
         System.out.println("   1. 내 잔여 골드 확인");
         System.out.println("   2. 뒤로 가기");
@@ -106,7 +106,7 @@ public class Option {
         // 3. 처음으로(10G)
         System.out.println("처음으로 되돌아갑니다.");
         Application.g.setGold(-10);
-        line();
+        Application.line();
         //처음 장소로 이동하는 거 선언하기
     }
 
@@ -117,13 +117,13 @@ public class Option {
         System.out.println("              역시 뭐든 돈이 최고네요. :)              ");
         System.out.println("              다음 방문을 기다리겠습니다.");
         System.out.println("                  좋은 하루 되세요~!         ");
-        line();
+        Application.line();
     }
-
-    public static void line () {
-        System.out.println();
-        System.out.println("===================================================");
-        System.out.println();
-    }
+//
+//    public static void line () {
+//        System.out.println();
+//        System.out.println("===================================================");
+//        System.out.println();
+//    }
 
 }
