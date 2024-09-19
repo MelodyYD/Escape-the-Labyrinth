@@ -3,23 +3,9 @@ package com.ohgiraffers.PR.Escape_to_the_Labyrinth;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.ohgiraffers.PR.Escape_to_the_Labyrinth.Application.*;
-
-
-
 public class MiniGame {
 
-//    private Gold g;
-//
-//    public MiniGame() {
-//        g = new Gold();
-//    }
-
-
-    //Gold 부분을 다 없애고 리턴으로 정수 리턴하기!!!!!!!!!!!!!!!
-
-
-    public int miniGameRPSStart() {
+    public void miniGameRPSStart() {
         line();
         System.out.println("=============  · · · Now Loading · · · ============");
         line();
@@ -27,7 +13,7 @@ public class MiniGame {
         System.out.println("        가위바위보 대결을 통하여 골드를 획득해 보세요!");
         System.out.println();
         miniGameRPS();
-        return 67;
+//        return 67;
     }
 
     public void miniGameRPS() {
@@ -54,58 +40,39 @@ public class MiniGame {
     public void userRPS(int userRps,int randRps) {
         if (userRps==randRps) {
             rpsSame(userRps, randRps);
-        } else if (userRps==1) {
-            if (randRps==2) {
-                rpsLose(userRps,randRps);
-            } else {
-                rpsWin(userRps, randRps);
-            }
-        } else if (userRps==2) {
-            if (randRps==3) {
-                rpsLose(userRps,randRps);
-            } else {
-                rpsWin(userRps, randRps);
-            }
-        } else if (userRps==3) {
-            if (randRps==1) {
-                rpsLose(userRps,randRps);
-            } else {
-                rpsWin(userRps, randRps);
-            }
+        } else if ((userRps==1 && randRps==2) || (userRps==2 && randRps==3) || (userRps==3 && randRps==1)) {
+            rpsLose(userRps,randRps);
+        } else {
+            rpsWin(userRps, randRps);
         }
     }
 
     public void rpsWin (int userRps, int randRps) {
-        String ranRPS = changeRPS(randRps);
-        String usrRPS = changeRPS(userRps);
-
-        System.out.println("과연 결과는...!");
-        line();
-        System.out.println(Application.name + "님이 낸 패 : " + usrRPS);
-        System.out.println("미궁이 낸 패 : " + ranRPS);
-        line();
+        rpsResult(userRps,randRps);
         System.out.println("승리~!!!");
         int winGold = winGold();
         System.out.println("당신에게 " + winGold + "G가 주어집니다.");
-        g.setGold(winGold);
+        Application.g.setGold(winGold);
     }
 
     public void rpsLose (int userRps, int randRps) {
-        String ranRPS = changeRPS(randRps);
-        String usrRPS = changeRPS(userRps);
-
-        System.out.println("과연 결과는...!");
-        line();
-        System.out.println(Application.name + "님이 낸 패 : " + usrRPS);
-        System.out.println("미궁이 낸 패 : " + ranRPS);
-        line();
+        rpsResult(userRps,randRps);
         System.out.println("패배...");
         int loseGold = loseGold();
         System.out.println("당신에게 " + loseGold + "G가 주어집니다.");
-        g.setGold(loseGold);
+        Application.g.setGold(loseGold);
     }
 
-    public int rpsSame (int userRps, int randRps) {
+    public void rpsSame (int userRps, int randRps) {
+        rpsResult(userRps,randRps);
+        System.out.println("비겼습니다! 아쉽네요!");
+        int sameGold = sameGold();
+        System.out.println("당신에게 " + sameGold + "G가 주어집니다.");
+        Application.g.setGold(sameGold);
+//        return sameGold;
+    }
+
+    public void rpsResult (int userRps, int randRps) {
         String ranRPS = changeRPS(randRps);
         String usrRPS = changeRPS(userRps);
 
@@ -114,10 +81,6 @@ public class MiniGame {
         System.out.println(Application.name + "님이 낸 패 : " + usrRPS);
         System.out.println("미궁이 낸 패 : " + ranRPS);
         line();
-        System.out.println("비겼습니다! 아쉽네요!");
-        int sameGold = sameGold();
-        System.out.println("당신에게 " + sameGold + "G가 주어집니다.");
-        return sameGold;
     }
 
     //미니게임(가위바위보) 만들기
@@ -140,8 +103,8 @@ public class MiniGame {
 
     public int sameGold() {
         Random loseRand = new Random();
-        int loseGold = loseRand.nextInt(21) + 9;
-        return loseGold;
+        int sameGold = loseRand.nextInt(21) + 9;
+        return sameGold;
     }
 
     public int loseGold() {

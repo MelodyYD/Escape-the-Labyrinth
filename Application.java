@@ -7,6 +7,7 @@ import static java.lang.System.exit;
 public class Application {
 
     public static String name;
+    static Gold g = new Gold();
 
     public static void main(String[] args) {
         /* 프로그램 개요.
@@ -56,7 +57,7 @@ public class Application {
 
         Scanner sc = new Scanner(System.in);
         Option opt = new Option();
-        Gold g = new Gold();
+
         Labyrinth laby = new Labyrinth();
         MiniGame mGame = new MiniGame();
 

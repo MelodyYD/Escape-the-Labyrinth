@@ -7,7 +7,6 @@ import static java.lang.System.exit;
 public class Option {
     Scanner sc = new Scanner(System.in);
 
-    private Gold g = new Gold();
     private Labyrinth laby = new Labyrinth();
     private MiniGame mGame = new MiniGame();
 
@@ -56,11 +55,10 @@ public class Option {
             goldChack();
             int numGold = sc.nextInt();
             if (numGold == 1) {
-                System.out.println("현재 " + name + "님이 가지고 있는 골드는 총 " + g.goldState() + " Gold 입니다.");
+                System.out.println("현재 " + name + "님이 가지고 있는 골드는 총 " + Application.g.goldState() + " Gold 입니다.");
                 line();
             } else if(numGold == 2) {
-                g.setGold(mGame.miniGameRPSStart());
-
+                mGame.miniGameRPSStart();
 //                System.out.println("뒤로 돌아갑니다.");
                 line();
                 break;
@@ -97,7 +95,7 @@ public class Option {
         System.out.println(" 무엇을 하시겠습니까?");
         System.out.println("   1. 내 잔여 골드 확인");
         System.out.println("   2. 뒤로 가기");
-        if (g.goldState() >= 150) {
+        if (Application.g.goldState() >= 150) {
             System.out.println("   3. 탈출하기! (150G)");
         }
         System.out.println();
@@ -107,13 +105,14 @@ public class Option {
     public void startBack() {
         // 3. 처음으로(10G)
         System.out.println("처음으로 되돌아갑니다.");
-        g.goldDownStart(10);
+        Application.g.setGold(-10);
         line();
         //처음 장소로 이동하는 거 선언하기
     }
 
     public void escapeLabirinth() {
         // 골드로 탈출
+        Application.g.setGold(-150);
         finishGame();
         System.out.println("              역시 뭐든 돈이 최고네요. :)              ");
         System.out.println("              다음 방문을 기다리겠습니다.");

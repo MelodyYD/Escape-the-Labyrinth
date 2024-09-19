@@ -9,18 +9,20 @@ public class Gold {
     }
 
     public void setGold(int change) {
-        // 골드 추가 획득
+        // 골드 추가 획득 혹은 사용
         this.gold += change;
-        System.out.println(change);
+//        System.out.println(change);
     }
 
-    public void goldDownStart (int change) {
-        // 골드 사용 - 처음으로
-        this.gold -= change;
-    }
+    // 골드 사용할 때에는 -로 받을 수 있도록
 
-    public void goldDownEnd (int change) {
-        // 골드 사용 - 탈출
-        this.gold -= change;
-    }
+//    public void goldDownStart (int change) {
+//        // 골드 사용 - 처음으로
+//        this.gold -= change;
+//    }
+//
+//    public void goldDownEnd (int change) {
+//        // 골드 사용 - 탈출
+//        this.gold -= change;
+//    }
 }
