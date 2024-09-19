@@ -52,40 +52,26 @@ public class MiniGame {
     }
 
     public void userRPS(int userRps,int randRps) {
-        switch (userRps) {          //if로 바꿔보기
-            case 1:     //가위
-                if (randRps == 1) {     //가위
-                    rpsSame(userRps,randRps);
-                    break;
-                } else if (randRps == 2) {      //바위
-                    rpsLose(userRps,randRps);
-                    break;
-                } else if (randRps == 3) {      //보
-                    rpsWin(userRps,randRps);
-                    break;
-                }
-            case 2:     //바위
-                if (randRps == 1) {     //가위
-                    rpsWin(userRps,randRps);
-                    break;
-                } else if (randRps == 2) {      //바위
-                    rpsSame(userRps,randRps);
-                    break;
-                } else if (randRps == 3) {      //보
-                    rpsLose(userRps,randRps);
-                    break;
-                }
-            case 3:     //보
-                if (randRps == 1) {     //가위
-                    rpsLose(userRps,randRps);
-                    break;
-                } else if (randRps == 2) {      //바위
-                    rpsWin(userRps,randRps);
-                    break;
-                } else if (randRps == 3) {      //보
-                    rpsSame(userRps,randRps);
-                    break;
-                }
+        if (userRps==randRps) {
+            rpsSame(userRps, randRps);
+        } else if (userRps==1) {
+            if (randRps==2) {
+                rpsLose(userRps,randRps);
+            } else {
+                rpsWin(userRps, randRps);
+            }
+        } else if (userRps==2) {
+            if (randRps==3) {
+                rpsLose(userRps,randRps);
+            } else {
+                rpsWin(userRps, randRps);
+            }
+        } else if (userRps==3) {
+            if (randRps==1) {
+                rpsLose(userRps,randRps);
+            } else {
+                rpsWin(userRps, randRps);
+            }
         }
     }
 
@@ -119,7 +105,7 @@ public class MiniGame {
         g.setGold(loseGold);
     }
 
-    public void rpsSame (int userRps, int randRps) {
+    public int rpsSame (int userRps, int randRps) {
         String ranRPS = changeRPS(randRps);
         String usrRPS = changeRPS(userRps);
 
@@ -131,7 +117,7 @@ public class MiniGame {
         System.out.println("비겼습니다! 아쉽네요!");
         int sameGold = sameGold();
         System.out.println("당신에게 " + sameGold + "G가 주어집니다.");
-        g.setGold(sameGold);
+        return sameGold;
     }
 
     //미니게임(가위바위보) 만들기
