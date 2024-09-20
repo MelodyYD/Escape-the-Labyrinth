@@ -7,21 +7,26 @@ public class Labyrinth {
     int nowLocation;
 
     public void mainLaby () {
-        if (nowLocation == 0) {
-            startPoint();
-            opt.defaultOption();
+        realStart();
+        while (true) {
+            if (nowLocation == 0) {
+                startPoint();
+            } else if (nowLocation == 40) {
+                goalPoint();
+                System.out.println();
+                opt.finishGame();
+            } else if (nowLocation == 01 || nowLocation == 27 || nowLocation == 30 || nowLocation == 31) {
+                goldPoint();
+                System.out.println();
+                mGame.miniGameRPSStart();
+            } else {
+                defPoint();
+                // 포인트가 아닌 곳은 항상 여기로 롤백되어서 nowLocation 확인해서 맞는 걸로 출력
+            }
             // 본격적인 시작하는 메소드로 넘어가기
-        } else if (nowLocation == 40) {
-            goalPoint();
-            System.out.println();
-            opt.finishGame();
-        } else if (nowLocation == 01 || nowLocation == 27 || nowLocation == 30 || nowLocation == 31) {
-            goldPoint();
-            System.out.println();
-            mGame.miniGameRPSStart();
-        } else {
-            defPoint();
-            // 포인트가 아닌 곳은 항상 여기로 롤백되어서 nowLocation 확인해서 맞는 걸로 출력
+            opt.defaultOption();
+
+            //nowLocation 이동하기
         }
     }
 
