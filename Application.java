@@ -81,9 +81,10 @@ public class Application {
         int ss = sc.nextInt();
 
         if (ss == 2) {
-            opt.endGame(name);
+            opt.endGame();
         } else if (ss == 1) {
-            opt.startGame(name);
+            System.out.println("미로 탈출을 시작합니다.");
+            opt.playGame();
         }
 
     }

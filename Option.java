@@ -22,8 +22,9 @@ public class Option {
         System.out.print("메뉴를 선택해주세요 : ");
     }
 
-    public void startGame(String name) {
+    public void playGame() {
         while (true) {
+            int nowLocation = laby.mainLaby();
             defaultOption();
             int numDef = sc.nextInt();
             if(numDef == 9) {
@@ -32,17 +33,18 @@ public class Option {
                 startBack();
                 break;
             }
-            subDetOpt(numDef, name);
+            subDetOpt(numDef, nowLocation);
         }
     }
 
-    public void subDetOpt(int numDef, String name) {
+    public void subDetOpt(int numDef, int nowLocation) {
         switch (numDef) {
             case 1:
+                laby.pointDivision(nowLocation);
                 // 미궁 탐험 시작
                 break;
             case 2:
-                goldChkOpt(name);
+                goldChkOpt();
                 break;
             default:
                 System.out.println("잘못 입력했습니다. 다시 입력해 주세요.");
@@ -50,16 +52,16 @@ public class Option {
         }
     }
 
-    public void goldChkOpt (String name) {
+    public void goldChkOpt () {
         while(true) {
             goldChack();
             int numGold = sc.nextInt();
             if (numGold == 1) {
-                System.out.println("현재 " + name + "님이 가지고 있는 골드는 총 " + Application.g.goldState() + " Gold 입니다.");
+                System.out.println("현재 " + Application.name + "님이 가지고 있는 골드는 총 " + Application.g.goldState() + " Gold 입니다.");
                 Application.line();
             } else if(numGold == 2) {
-                mGame.miniGameRPSStart();
-//                System.out.println("뒤로 돌아갑니다.");
+//                mGame.miniGameRPSStart();
+                System.out.println("뒤로 돌아갑니다.");
                 Application.line();
                 break;
             } else if(numGold == 3) {
@@ -71,11 +73,11 @@ public class Option {
         }
     }
 
-    public void endGame(String name) {
+    public void endGame() {
         Application.line();
         System.out.println("                      아쉽네요.");
         System.out.println("                  게임이 종료됩니다.");
-        System.out.println("                   또 봐요, " + name + "님.");
+        System.out.println("                   또 봐요, " + Application.name + "님.");
         Application.line();
     }
 
